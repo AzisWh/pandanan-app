@@ -59,28 +59,23 @@
 <!-- About Start -->
 <div class="container-fluid about overflow-hidden py-5">
     <div class="container py-5">
-        <div class="row g-5">
+        @foreach ($homeWelcomes as $item)
+          <div class="row g-5">
             <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                 <div class="about-img rounded h-100">
-                    <img src="{{asset ('/assets/img/pandanan/pantai.jpeg')}}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="">
-                    <div class="about-exp"><span>Pantai Pandanan</span></div>
+                    <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('storage/default.jpg') }}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="{{ $item->imgtitle ?? 'EMPTY' }}">
+                    <div class="about-exp"><span>{{ $item->imgtitle ?? 'EMPTY' }}</span></div>
                 </div>
             </div>
             <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
                 <div class="about-item">
                     <h4 class="text-primary text-uppercase">Selamat Datang </h4>
-                    <h1 class="display-3 mb-3">di Taman Laut Pandanan.</h1>
-                    <p class="mb-4">Taman Laut Pandanan adalah surga tersembunyi di Lombok Utara yang menawarkan keindahan bawah laut yang menakjubkan.
-                        Dengan terumbu karang yang masih alami dan beragam biota laut, Taman Laut Pandanan menjadi destinasi favorit bagi para
-                        pecinta snorkeling dan diving. Air laut yang jernih memungkinkan Anda menikmati panorama bawah laut yang memukau.
-                    </p>
-                    <p class="mb-4">Selain keindahan bawah lautnya, Taman Laut Pandanan juga memiliki pantai dengan pasir putih yang menenangkan.
-                        Tempat ini ideal untuk Anda yang mencari ketenangan dan ingin menjauh sejenak dari keramaian.
-                        Ayo, jelajahi keindahan Taman Laut Pandanan dan rasakan pengalaman tak terlupakan di sini!
-                    </p>
+                    <h1 class="display-3 mb-3">{{ $item->title ?? 'EMPTY' }}</h1>
+                    <p class="mb-4">{{ $item->description ?? 'EMPTY' }}</p>
                 </div>
             </div>
-        </div>
+          </div>
+        @endforeach
     </div>
 </div>
 <!-- About End -->
@@ -91,123 +86,30 @@
     <section class="container my-5">
         <h2 class="text-center mb-4 text-white">Paket dan Jasa Wisata</h2>
         <div class="row">
+        @foreach ($paketJasa as $item)
           <div class="col-md-4 mb-4">
             <div class="service-item rounded p-4 mb-4">
               <div class="row">
-                <div class="col-12">
-                  <div class="d-flex">
-                    <div class="service-content text-end">
-                      <a href="#" class="h5 d-inline-block mb-3">Fun Diving</a>
-                      <p class="mb-0">Alat SCUBA set, makan 1x, dokumentasi, guide, perahu. Durasi 2,5 jam. Rp 300.000/pax.</p>
+                    <div class="col-12">
+                        <div class="d-flex">
+                        <div class="service-content text-end">
+                            <a href="#" class="h5 d-inline-block mb-3">{{$item->name}}</a>
+                            <p class="mb-0">{{$item->description}}</p>
+                            <h5 class="fw-bold">Rp. {{$item->price}}/pax.</h4>
+                        </div>
+                        <div class="ps-4">
+                            <div class="service-btn">
+                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('storage/default.jpg') }}" alt="Card {{$item->name ?? 'EMPTY'}}" style="width: 100px; height: 100px;">
+                            </div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="ps-4">
-                      <div class="service-btn">
-                        <img src="{{ asset ('/assets/img/pandanan/fundiving.png')}}" alt="Fun Diving Icon" style="width: 100px; height: 100px;">
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="service-item rounded p-4 mb-4">
-              <div class="row">
-                <div class="col-12">
-                  <div class="d-flex">
-                    <div class="service-content text-end">
-                      <a href="#" class="h5 d-inline-block mb-3">Snorkeling</a>
-                      <p class="mb-0">Snorkeling gear, makan 1x, dokumentasi, guide, perahu. Durasi 1,5 jam. Rp 400.000/5 pax.</p>
-                    </div>
-                    <div class="ps-4">
-                      <div class="service-btn">
-                        <img src="{{ asset ('/assets/img/pandanan/snorkling.png')}}" alt="Snorkeling Icon" style="width: 100px; height: 100px;">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="service-item rounded p-4 mb-4">
-              <div class="row">
-                <div class="col-12">
-                  <div class="d-flex">
-                    <div class="service-content text-end">
-                      <a href="#" class="h5 d-inline-block mb-3">Research</a>
-                      <p class="mb-0">Alat SCUBA set, dokumentasi, guide, perahu. Rp 350.000/pax.</p>
-                    </div>
-                    <div class="ps-4">
-                      <div class="service-btn">
-                        <img src="{{ asset ('/assets/img/pandanan/research.png')}}" alt="Research Icon" style="width: 100px; height: 100px;">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>    
+        @endforeach
         </div>
-        <div class="row">
-          <div class="col-md-4 mb-4">
-            <div class="service-item rounded p-4 mb-4">
-              <div class="row">
-                <div class="col-12">
-                  <div class="d-flex">
-                    <div class="service-content text-end">
-                      <a href="#" class="h5 d-inline-block mb-3">Sunset Trip</a>
-                      <p class="mb-0">Dokumentasi, guide, perahu. Durasi 1 jam. Rp 250.000/5 pax.</p>
-                    </div>
-                    <div class="ps-4">
-                      <div class="service-btn">
-                        <img src="{{ asset ('/assets/img/pandanan/sunsettrip.png')}}" alt="Sunset Trip Icon" style="width: 100px; height: 100px;">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="service-item rounded p-4 mb-4">
-              <div class="row">
-                <div class="col-12">
-                  <div class="d-flex">
-                    <div class="service-content text-end">
-                      <a href="#" class="h5 d-inline-block mb-3">Tracking Bukit Melka</a>
-                      <p class="mb-0">Transportasi, snack, guide, dokumentasi. Durasi 4-6 jam. Rp 150.000/5 pax.</p>
-                    </div>
-                    <div class="ps-4">
-                      <div class="service-btn">
-                        <img src="{{ asset ('/assets/img/pandanan/tracking.png')}}" alt="Tracking Bukit Melka Icon" style="width: 100px; height: 100px;">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="service-item rounded p-4 mb-4">
-              <div class="row">
-                <div class="col-12">
-                  <div class="d-flex">
-                    <div class="service-content text-end">
-                      <a href="#" class="h5 d-inline-block mb-3">Fishing</a>
-                      <p class="mb-0">Dokumentasi, guide, perahu. Rp 700.000/5 pax.</p>
-                    </div>
-                    <div class="ps-4">
-                      <div class="service-btn">
-                        <img src="{{ asset ('/assets/img/pandanan/fishing.png')}}" alt="Fishing Icon" style="width: 100px; height: 100px;">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>          
-          </div>
-          <div class="d-flex justify-content-center align-items-center mt-4">
+        <div class="d-flex justify-content-center align-items-center mt-4">
             <a href="{{url ('/service')}}" class="btn btn-primary p-3" style="font-size: 20px">More Detail</a>
         </div>  
         </div>
@@ -236,7 +138,6 @@
                         <span>Peralatan menyelam dan snorkeling yang mutakhir</span>
                     </li>
                 </ul>
-                <a href="#" class="btn btn-primary mb-3">Jelajahi Layanan Kami</a>
             </div>
             <div class="col-md-6">
                 <div class="row g-3">
@@ -276,86 +177,23 @@
         <!-- Accordion -->
         <div class="col-lg-8">
             <div class="accordion" id="faqAccordion">
+                @foreach ($faq as $item)
                 <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            How does the booking process work?
+                    <h2 class="accordion-header" id="headingOne{{ $item->accordionname }}">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $item->accordionname }}" aria-expanded="false" aria-controls="collapse{{ $item->accordionname }}">
+                            {{ $item->question }}
                         </button>
                     </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                    <div id="collapse{{ $item->accordionname }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $item->accordionname }}" data-bs-parent="#faqAccordion">
                         <div class="accordion-body">
-                            The booking process is simple and straightforward. You can book online through our website or contact us directly for assistance.
+                            {{$item->answer}}
                         </div>
                     </div>
                 </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Do I need travel and diving insurance?
-                        </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Yes, we highly recommend that all our guests have travel and diving insurance for their own safety and peace of mind.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Are children allowed on board?
-                        </button>
-                    </h2>
-                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Children are welcome on board, but we recommend checking specific trip details to ensure the experience is suitable for them.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFour">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                            What is included in my trip?
-                        </button>
-                    </h2>
-                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Our trips typically include accommodation, meals, guided tours, and snorkeling or diving equipment. Please refer to the specific trip details.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingFive">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            What are the excluded features?
-                        </button>
-                    </h2>
-                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Typically, exclusions include personal expenses, alcoholic beverages, and any additional activities not specified in the itinerary.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingSix">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                            Can you help me with my flights?
-                        </button>
-                    </h2>
-                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
-                        <div class="accordion-body">
-                            Yes, we can assist you with flight bookings and provide recommendations based on your travel dates and destination.
-                        </div>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
         </div>
+
     </div>
 </div>
 <!-- End FAQ Section -->

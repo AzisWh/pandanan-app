@@ -81,9 +81,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/homepage" class="nav-link">
+                <a href="{{url('/homepage')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Menu Home</p>
+                  <p>Welcome Layout</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/paketjasa')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Paket Jasa Card</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/layanan')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Accordion Layanan Kami</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/faq')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>FAQ Section</p>
                 </a>
               </li>
              
@@ -121,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">@yield('title')</h1>
+            <h1 class="m-0">Admin View</h1>
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -136,7 +154,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             <div class="card card-primary card-outline">
               <div class="card-header">
-                <h5 class="m-0">@yield('title')</h5>
+                {{-- <h5 class="m-0">@yield('title')</h5> --}}
               </div>
               <div class="card-body">
                {{-- content --}}

@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\HomeWelcome;
+use App\Models\LayananKami;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class HomeController extends Controller
+class LayananKamiController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $homeWelcomes = HomeWelcome::all();
-        $itemCount = $homeWelcomes->count();
-        return view('admin.homepage.index',compact('homeWelcomes','itemCount'));
+        $layanan = LayananKami::all();
+        return view('admin.layanan.index', compact('layanan'));
     }
 
     /**
@@ -23,7 +22,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        return view('admin.homepage.create');
+        return view('admin.layanan.create');
     }
 
     /**
@@ -33,20 +32,20 @@ class HomeController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'imgtitle' => 'required|string|max:255',
             'description' => 'required|string',
+            'accordionname' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if($request->hasFile('image')) {
             $originalName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('HomePage', $originalName, 'public');
+            $path = $request->file('image')->storeAs('Layanan', $originalName, 'public');
             $validated['image'] = $path;
         }
 
-        HomeWelcome::create($validated);
+        LayananKami::create($validated);
 
-        return redirect()->route('home.index')->with('success', 'Home Welcome section created successfully.');
+        return redirect()->route('layanan.index')->with('success', 'Home Welcome section created successfully.');
     }
 
     /**
@@ -54,8 +53,8 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        $homeWelcome = HomeWelcome::findOrFail($id);
-        return view('admin.homepage.update', compact('homeWelcome'));
+        $layanan = LayananKami::findOrFail($id);
+        return view('admin.layanan.update', compact('layanan'));
     }
 
     /**
@@ -63,8 +62,8 @@ class HomeController extends Controller
      */
     public function edit(string $id)
     {
-        $homeWelcome = HomeWelcome::findOrFail($id);
-        return view('admin.homepage.update', compact('homeWelcome'));
+        $layanan = LayananKami::findOrFail($id);
+        return view('admin.layanan.update', compact('layanan'));
     }
 
     /**
@@ -72,29 +71,29 @@ class HomeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $homeWelcome = HomeWelcome::findOrFail($id);
+        $layanan = LayananKami::findOrFail($id);
 
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'imgtitle' => 'required|string|max:255',
             'description' => 'required|string',
+            'accordionname' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if($request->hasFile('image')) {
             //Hapus gambar lama jika ada
-            if ($homeWelcome->image && Storage::disk('public')->exists($homeWelcome->image)) {
-                Storage::disk('public')->delete($homeWelcome->image);
+            if ($layanan->image && Storage::disk('public')->exists($layanan->image)) {
+                Storage::disk('public')->delete($layanan->image);
             }
 
             $originalName = $request->file('image')->getClientOriginalName();
-            $path = $request->file('image')->storeAs('HomePage', $originalName, 'public');
+            $path = $request->file('image')->storeAs('Layanan', $originalName, 'public');
             $validated['image'] = $path;
         }
 
-        $homeWelcome->update($validated);
+        $layanan->update($validated);
 
-        return redirect()->route('home.index')->with('success', 'Home Welcome section updated successfully.');
+        return redirect()->route('layanan.index')->with('success', 'Home Welcome section updated successfully.');
     }
 
     /**
@@ -102,14 +101,14 @@ class HomeController extends Controller
      */
     public function destroy(string $id)
     {
-        $homeWelcome = HomeWelcome::findOrFail($id);
+        $layanan = LayananKami::findOrFail($id);
 
         // Hapus gambar jika ada
-        if ($homeWelcome->image && Storage::disk('public')->exists($homeWelcome->image)) {
-            Storage::disk('public')->delete($homeWelcome->image);
+        if ($layanan->image && Storage::disk('public')->exists($layanan->image)) {
+            Storage::disk('public')->delete($layanan->image);
         }
 
-        $homeWelcome->delete();
-        return redirect()->route('home.index')->with('success', 'Home Welcome section deleted successfully.');
+        $layanan->delete();
+        return redirect()->route('layanan.index')->with('success', 'Home Welcome section deleted successfully.');
     }
 }
