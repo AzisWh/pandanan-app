@@ -10,6 +10,7 @@
         @else
             <button class="btn btn-secondary mb-3" disabled>Max 1 item</button>
         @endif
+        <a href="{{ route('landing.index') }}" target="_blank" class="btn btn-warning mb-3">Cek Tampilan</a> 
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>

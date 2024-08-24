@@ -32,7 +32,7 @@
                 <textarea class="form-control" id="description" name="description" rows="3" required>{{ old('description', $layanan->description) }}</textarea>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">Image (max 2mb)</label>
                 @if ($layanan->image)
                     <div class="mb-2">
                         <img src="{{ Storage::url($layanan->image) }}" alt="{{ $layanan->title }}" style="width: 100px;">

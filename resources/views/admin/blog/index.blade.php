@@ -1,41 +1,40 @@
 @extends('layout.adminlayout')
 
-@section('title','Layanan Accordion')
+@section('title', 'Blog Management')
 
 @section('content')
     <div class="container">
-        <h1>Layanan Controller</h1>
-        <a href="{{ route('layanan.create') }}" class="btn btn-primary mb-3">Tambah</a> 
-        <a href="{{ route('landing.index') }}" target="_blank" class="btn btn-warning mb-3">Cek Tampilan</a> 
+        <h1>Blog Management</h1>
+        <a href="{{ route('blog.create') }}" class="btn btn-primary mb-3">Tambah Blog</a> 
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
-                        <th>AccordionName</th>
-                        <th>Description</th>
+                        <th>Content</th>
+                        <th>Publish Date</th>
                         <th>Image</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($layanan as $item)
+                    @foreach($blog as $blog)
                         <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>{{ $item->title }}</td>
-                            <td>{{ $item->accordionname }}</td>
-                            <td>{{ $item->description }}</td>
+                            <td>{{ $blog->id }}</td>
+                            <td>{{ $blog->title }}</td>
+                            <td>{{ Str::limit($blog->content, 100) }}</td>
+                            <td>{{ $blog->published_at ? $blog->published_at->format('d M Y') : 'Not Published' }}</td>
                             <td>
-                                @if($item->image)
-                                    <img src="{{ Storage::url($item->image) }}" alt="{{ $item->title }}" style="width: 100px;">
+                                @if($blog->image)
+                                    <img src="{{ Storage::url($blog->image) }}" alt="{{ $blog->title }}" style="width: 100px;">
                                 @else
                                     No Image
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('layanan.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('layanan.destroy', $item->id) }}" method="POST" style="display:inline-block;">
+                                <a href="{{ route('blog.edit', $blog->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="{{ route('blog.destroy', $blog->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

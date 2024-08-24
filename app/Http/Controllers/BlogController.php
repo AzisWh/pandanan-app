@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,12 +12,20 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('landing.blog');
+        $blog = Blog::all();
+        return view('landing.blog',compact('blog'));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('landing.blogdetail');
+        $blog = Blog::findOrFail($id);
+        return view('landing.blogdetail', compact('blog'));
+    }
+
+    public function admin()
+    {
+        $blog = Blog::all();
+        return view('admin.blog.index', compact('blog'));
     }
 
     /**
@@ -24,7 +33,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.blog.create');
     }
 
     /**
@@ -32,7 +41,25 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'nullable|image',
+            'published_at' => 'nullable|date', // Validasi untuk tanggal publikasi
+        ]);
+    
+        if ($request->hasFile('image')) {
+            $validatedData['image'] = $request->file('image')->store('images', 'public');
+        }
+        if($request->hasFile('image')) {
+            $originalName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('images', $originalName, 'public');
+            $validated['image'] = $path;
+        }
+    
+        Blog::create($validatedData);
+    
+        return redirect()->route('blog.index')->with('success', 'Blog created successfully.');
     }
 
     /**
@@ -40,7 +67,8 @@ class BlogController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        return view('admin.blog.update', compact('blog'));
     }
 
     /**
@@ -48,7 +76,8 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        return view('admin.blog.edit', compact('blog'));
     }
 
     /**
@@ -56,7 +85,24 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'nullable|image',
+            'published_at' => 'nullable|date', // Validasi untuk tanggal publikasi
+        ]);
+
+        $blog = Blog::findOrFail($id);
+
+        if($request->hasFile('image')) {
+            $originalName = $request->file('image')->getClientOriginalName();
+            $path = $request->file('image')->storeAs('image', $originalName, 'public');
+            $validated['image'] = $path;
+        }
+
+        $blog->update($validatedData);
+
+        return redirect()->route('blog.index')->with('success', 'Blog updated successfully.');
     }
 
     /**
@@ -64,6 +110,9 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $blog = Blog::findOrFail($id);
+        $blog->delete();
+
+        return redirect()->route('blog.index')->with('success', 'Blog deleted successfully.');
     }
 }

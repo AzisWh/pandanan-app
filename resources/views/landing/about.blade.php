@@ -29,24 +29,23 @@
 <!-- About Start -->
 <div class="container-fluid about overflow-hidden py-5">
     <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
-                <div class="about-img rounded h-100">
-                    <img src="{{asset ('/assets/img/pandanan/about-img.jpeg')}}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="">
-                    <div class="about-exp"><span>About Us</span></div>
+        @foreach ($about as $item)
+            <div class="row g-5">
+                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="about-img rounded h-100">
+                        <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('storage/default.jpg') }}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="{{ $item->imgtitle ?? 'EMPTY' }}">
+                        <div class="about-exp"><span>{{$item->imgtitle}}</span></div>
+                    </div>
+                </div>
+                <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="about-item">
+                        <h4 class="text-black text-uppercase">What Is </h4>
+                        <h1 class="display-3 mb-3">{{ $item->title ?? 'EMPTY' }}</h1>
+                        <p class="mb-4">{{ $item->description ?? 'EMPTY' }}</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
-                <div class="about-item">
-                    <h4 class="text-black text-uppercase">What Is </h4>
-                    <h1 class="display-3 mb-3">Pandanan Marine Technopark?</h1>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque distinctio ipsa, impedit suscipit veritatis veniam atque dolor. Tempore possimus ut fugiat maiores voluptatum voluptatibus numquam ipsam recusandae minima, suscipit expedita!
-                    </p>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime nulla voluptates, provident libero et nesciunt ratione vero magnam optio voluptatum voluptatibus excepturi sapiente veritatis assumenda natus. Sed nihil adipisci possimus.
-                    </p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <!-- About End -->
@@ -72,42 +71,16 @@
         <p>Learn more about our core strengths, vision, and mission.</p>
     </div>
     <div class="row">
-        <!-- Kelebihan 1 -->
-        <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card text-white text-center p-3" style="background-color: rgba(25, 64, 154, 0.9);">
-                <div class="card-body">
-                    <h5 class="card-title text-white fw-bold">lorem ipsum</h5>
-                    <p class="card-text fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi adipisci necessitatibus dolorum id? Voluptatem recusandae quam quo, rerum sequi excepturi illum optio natus. Esse id placeat rerum, atque earum dicta.</p>
+        @foreach ($visimisi as $item)
+            <div class="col-md-6 col-lg-3 mb-4">
+                <div class="card text-white text-center p-3" style="background-color: rgba(25, 64, 154, 0.9);">
+                    <div class="card-body">
+                        <h5 class="card-title text-white fw-bold">{{$item->cardtitle}}</h5>
+                        <p class="card-text fw-light">{{$item->description}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Kelebihan 2 -->
-        <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card text-white text-center p-3" style="background-color: rgba(25, 64, 154, 0.9);">
-                <div class="card-body">
-                    <h5 class="card-title text-white fw-bold">lorem ipsum</h5>
-                    <p class="card-text fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi adipisci necessitatibus dolorum id? Voluptatem recusandae quam quo, rerum sequi excepturi illum optio natus. Esse id placeat rerum, atque earum dicta.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Kelebihan 3 -->
-        <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card text-white text-center p-3" style="background-color: rgba(25, 64, 154, 0.9);">
-                <div class="card-body">
-                    <h5 class="card-title text-white fw-bold">lorem ipsum</h5>
-                    <p class="card-text fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi adipisci necessitatibus dolorum id? Voluptatem recusandae quam quo, rerum sequi excepturi illum optio natus. Esse id placeat rerum, atque earum dicta.</p>
-                </div>
-            </div>
-        </div>
-        <!-- Kelebihan 4 -->
-        <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card text-white text-center p-3" style="background-color: rgba(25, 64, 154, 0.9);">
-                <div class="card-body">
-                    <h5 class="card-title text-white fw-bold">lorem ipsum</h5>
-                    <p class="card-text fw-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi adipisci necessitatibus dolorum id? Voluptatem recusandae quam quo, rerum sequi excepturi illum optio natus. Esse id placeat rerum, atque earum dicta.</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>
 <!-- Akhir Kelebihan, Visi, dan Misi -->

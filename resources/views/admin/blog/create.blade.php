@@ -1,10 +1,10 @@
 @extends('layout.adminlayout')
 
-@section('title','Create Home Welcome')
+@section('title', 'Create New Blog')
 
 @section('content')
     <div class="container">
-        <h1>Create Home Welcome</h1>
+        <h1>Create New Blog</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -16,26 +16,26 @@
             </div>
         @endif
 
-        <form action="{{ route('homepage.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
             </div>
             <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required>{{ old('description') }}</textarea>
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="3" required>{{ old('content') }}</textarea>
             </div>
             <div class="mb-3">
-                <label for="imgtitle" class="form-label">Image Title</label>
-                <input type="text" class="form-control" id="imgtitle" name="imgtitle" value="{{ old('imgtitle') }}" required>
+                <label for="published_at" class="form-label">Publish Date</label>
+                <input type="date" class="form-control" id="published_at" name="published_at" value="{{ old('published_at') }}">
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image (2mb)</label>
+                <label for="image" class="form-label">Image (max 2mb)</label>
                 <input class="form-control" type="file" id="image" name="image">
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{{ url('/homepage') }}" class="btn btn-secondary">Cancel</a>
+            <a href="{{ route('blog.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 @endsection

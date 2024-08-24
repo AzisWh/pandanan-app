@@ -31,7 +31,7 @@
                 <input type="number" class="form-control" id="price" name="price" value="{{ old('price') }}" required>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">Image (max 2mb)</label>
                 <input class="form-control" type="file" id="image" name="image">
             </div>
             <button type="submit" class="btn btn-primary">Save</button>

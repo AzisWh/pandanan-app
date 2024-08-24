@@ -6,6 +6,8 @@
     <div class="container">
         <h1>Paket Jasa Controller</h1>
         <a href="{{ route('paketjasa.create') }}" class="btn btn-primary mb-3">Tambah</a> 
+        <a href="{{ route('landing.index') }}" target="_blank" class="btn btn-warning mb-3">Cek Tampilan pada Home</a> 
+        <a href="{{ route('landing.service') }}" target="_blank" class="btn btn-warning mb-3">Cek Tampilan pada Service</a> 
         <div class="table-responsive">
             <table class="table table-bordered table-striped">
                 <thead>

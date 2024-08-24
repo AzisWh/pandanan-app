@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LayananKami;
+use App\Models\PaketJasa;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -11,7 +13,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return view('landing.service');
+        $layanan = LayananKami::all();
+        $paketJasa = PaketJasa::all();
+        return view('landing.service',compact('layanan','paketJasa'));
     }
 
     /**

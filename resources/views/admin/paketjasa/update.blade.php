@@ -32,7 +32,7 @@
                 <input type="text" class="form-control" id="price" name="price" value="{{ old('price', $paketJasa->price) }}" required>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
+                <label for="image" class="form-label">Image (max 2mb)</label>
                 @if ($paketJasa->image)
                     <div class="mb-2">
                         <img src="{{ Storage::url($paketJasa->image) }}" alt="{{ $paketJasa->title }}" style="width: 100px;">

@@ -104,6 +104,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>FAQ Section</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{url('/aboutus')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>About Us Section</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/visimisi')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Visi Misi Section</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{url('/blog')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Blog Section</p>
+                </a>
+              </li>
              
               
              

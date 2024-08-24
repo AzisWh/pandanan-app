@@ -9,6 +9,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LayananKamiController;
 use App\Http\Controllers\PaketJasaController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,7 +31,7 @@ Route::get('/',[LandingController::class, 'index'])->name('landing.index');
 Route::get('/about-us',[AboutController::class, 'index'])->name('landing.about');
 Route::get('/service',[ServiceController::class,'index'])->name('landing.service');
 Route::get('/ourblog',[BlogController::class, 'index'])->name('landing.ourblog');
-Route::get('/blogname',[BlogController::class, 'detail'])->name('landing.blogdetail');
+Route::get('/blogname/{id}',[BlogController::class, 'detail'])->name('landing.blogdetail');
 
 // admin
 Route::get('/dash-log',[AuthController::class,'login'])->name('login');
@@ -68,4 +69,25 @@ Route::middleware('auth')->group(function(){
     Route::delete('/faq/{id}', [FaqController::class, 'destroy'])->name('faq.destroy');
     Route::get('/faq/create', [FaqController::class, 'create'])->name('faq.create');
     Route::post('/faq', [FaqController::class, 'store'])->name('faq.store');
+    // Aboutus Section
+    Route::get('/aboutus',[AboutController::class,'admin'])->name('aboutus.index');
+    Route::get('/aboutus/{id}/edit', [AboutController::class, 'edit'])->name('aboutus.edit');
+    Route::put('/aboutus/{id}', [AboutController::class, 'update'])->name('aboutus.update');
+    Route::delete('/aboutus/{id}', [AboutController::class, 'destroy'])->name('aboutus.destroy');
+    Route::get('/aboutus/create', [AboutController::class, 'create'])->name('aboutus.create');
+    Route::post('/aboutus', [AboutController::class, 'store'])->name('aboutus.store');
+    // Visi Misi Section
+    Route::get('/visimisi',[VisiMisiController::class,'index'])->name('visimisi.index');
+    Route::get('/visimisi/{id}/edit', [VisiMisiController::class, 'edit'])->name('visimisi.edit');
+    Route::put('/visimisi/{id}', [VisiMisiController::class, 'update'])->name('visimisi.update');
+    Route::delete('/visimisi/{id}', [VisiMisiController::class, 'destroy'])->name('visimisi.destroy');
+    Route::get('/visimisi/create', [VisiMisiController::class, 'create'])->name('visimisi.create');
+    Route::post('/visimisi', [VisiMisiController::class, 'store'])->name('visimisi.store');
+    // Visi Misi Section
+    Route::get('/blog',[BlogController::class,'admin'])->name('blog.index');
+    Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
+    Route::delete('/blog/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+    Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
 });
