@@ -7,7 +7,10 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LayananKamiController;
+use App\Http\Controllers\OrderAdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaketJasaController;
+use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\VisiMisiController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +35,14 @@ Route::get('/about-us',[AboutController::class, 'index'])->name('landing.about')
 Route::get('/service',[ServiceController::class,'index'])->name('landing.service');
 Route::get('/ourblog',[BlogController::class, 'index'])->name('landing.ourblog');
 Route::get('/blogname/{id}',[BlogController::class, 'detail'])->name('landing.blogdetail');
+Route::get('/reservasi',[ReservasiController::class, 'index'])->name('landing.ourblog');
+
+// order form
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+Route::get('/order/confirm', [OrderController::class, 'confirm'])->name('order.confirm');
+Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order/store', [OrderController::class, 'store'])->name('order.store');
+Route::get('/order/confirmation/{id}', [OrderController::class, 'confirmation'])->name('order.confirmation');
 
 // admin
 Route::get('/dash-log',[AuthController::class,'login'])->name('login');
@@ -90,4 +101,8 @@ Route::middleware('auth')->group(function(){
     Route::delete('/blog/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('/blog', [BlogController::class, 'store'])->name('blog.store');
+    // order form
+    Route::get('/admin/orders', [OrderAdminController::class, 'index'])->name('admin.orders.index');
+    Route::get('/admin/orders/{order}', [OrderAdminController::class, 'edit'])->name('admin.orders.edit');
+    Route::put('/admin/orders/{order}', [OrderAdminController::class, 'update'])->name('admin.orders.update');
 });

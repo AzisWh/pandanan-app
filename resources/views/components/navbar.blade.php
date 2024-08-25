@@ -12,5 +12,5 @@
                 </div>
             </div> --}}
             {{-- <button class="btn btn-primary btn-md-square d-flex flex-shrink-0 mb-3 mb-lg-0 rounded-circle me-3" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button> --}}
-            <a href="" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4">Book Now</a>
+            <a href="{{url ('/reservasi')}}" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4">Book Now</a>
   
