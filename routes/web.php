@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function(){
     // welcome page home 
     Route::get('/homepage',[HomeController::class,'index'])->name('home.index');
     Route::get('/homepage/{id}/edit', [HomeController::class, 'edit'])->name('homepage.edit');
-    Route::put('/homepage/{id}', [HomeController::class, 'update'])->name('paketjasa.update');
+    Route::put('/homepage/{id}', [HomeController::class, 'update'])->name('homepage.update');
     Route::delete('/homepage/{id}', [HomeController::class, 'destroy'])->name('homepage.destroy');
     Route::get('/homepage/create', [HomeController::class, 'create'])->name('homepage.create');
     Route::post('/homepage', [HomeController::class, 'store'])->name('homepage.store');
