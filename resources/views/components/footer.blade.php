@@ -9,9 +9,9 @@
             </div>
             <div class="col-lg-5">
                 <div class="d-flex align-items-center justify-content-center justify-content-lg-end">
-                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href=""><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-secondary btn-md-square rounded-circle me-3" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -19,8 +19,15 @@
             <div class="col-md-6 col-lg-6 col-xl-3">
                 <div class="footer-item d-flex flex-column">
                     <div class="footer-item">
-                        <h3 class="text-white mb-4">Lorem</h3>
-                        <p class="mb-3">Dolor amet sit justo amet elitr clita ipsum elitr est.Lorem ipsum dolor sit amet, consectetur adipiscing elit consectetur adipiscing elit.</p>
+                        <h3 class="text-white mb-4">Support By</h3>
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center justify-content-center mb-3">
+                                <img src="{{asset ('/assets/img/pandanan/BPSPL.PNG')}}" alt="BPSPL" class="img-thumbnail img-fluid" style="max-width: 100px;">
+                            </div>
+                            <div class="col-6 d-flex align-items-center justify-content-center mb-3">
+                                <img src="{{asset ('/assets/img/pandanan/power.PNG')}}" alt="PLN" class="img-thumbnail img-fluid" style="max-width: 150px;">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -12,6 +13,7 @@ class BlogController extends Controller
      */
     public function index()
     {
+        
         $blog = Blog::all();
         return view('landing.blog',compact('blog'));
     }

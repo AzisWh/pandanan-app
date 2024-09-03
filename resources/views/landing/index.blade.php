@@ -16,8 +16,8 @@
                         <div class="carousel-caption-1-content" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase fw-bold mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">Taman Laut</h4>
                             <h1 class="display-2 text-capitalize text-white mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.3s" style="animation-delay: 1.3s;">Pandanan Marine Technopark</h1>
-                            <p class="mb-5 fs-5 text-white fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            </p>
+                            {{-- <p class="mb-5 fs-5 text-white fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            </p> --}}
                             <div class="carousel-caption-1-content-btn fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.7s" style="animation-delay: 1.7s;">
                                 <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="#">Book Now</a>
                                 <a class="btn btn-secondary rounded-pill flex-shrink-0 py-3 px-5 ms-2" href="#">View Website</a>
@@ -31,8 +31,8 @@
                         <div class="carousel-caption-2-content" style="max-width: 900px;">
                             <h4 class="text-white text-uppercase fw-bold mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">Taman Laut</h4>
                             <h1 class="display-2 text-capitalize text-white mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1.3s" style="animation-delay: 1.3s;">Pandanan Marine Technopark</h1>
-                            <p class="mb-5 fs-5 text-white fadeInRight animated" data-animation="fadeInRight" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                            </p>
+                            {{-- <p class="mb-5 fs-5 text-white fadeInRight animated" data-animation="fadeInRight" data-delay="1.5s" style="animation-delay: 1.5s;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                            </p> --}}
                             <div class="carousel-caption-2-content-btn fadeInRight animated" data-animation="fadeInRight" data-delay="1.7s" style="animation-delay: 1.7s;">
                                 <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="#">Book Now</a>
                                 <a class="btn btn-secondary rounded-pill flex-shrink-0 py-3 px-5 ms-2" href="#">View Website</a>
@@ -161,6 +161,35 @@
 <!-- Akhir Mengapa Memilih Taman Laut Pandanan -->
 
 @include('components.ourservice')
+
+<!-- Blog Start -->
+<div class="container-fluid blog py-5">
+    <div class="container py-5">
+        <div class="text-center mx-auto pb-5 wow fadeInUp" data-wow-delay="0.2s" style="max-width: 800px;">
+            <h4 class="text-uppercase text-primary">Newest Blog</h4>
+        </div>
+        <div class="row g-4 justify-content-center">
+            @foreach($blog as $blog)
+                <div class="col-lg-6 col-xl-4 wow fadeInUp" data-wow-delay="0.2s">
+                    <a href="{{ route('landing.blogdetail', $blog->id) }}">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <img src="{{ $blog->image ? Storage::url($blog->image) : asset('landing/img/blog-1.jpg') }}" class="img-fluid rounded-top w-100" alt="{{ $blog->title }}">
+                                <div class="blog-date px-4 py-2"><i class="fa fa-calendar-alt me-1"></i> {{ $blog->published_at ? \Carbon\Carbon::parse($blog->published_at)->format('M d, Y') : 'Not Published' }}</div>
+                            </div>
+                            <div class="blog-content rounded-bottom p-4">
+                                <a href="{{ route('landing.blogdetail', $blog->id) }}" class="h4 d-inline-block mb-3">{{ $blog->title }}</a>
+                                <p>{{ Str::limit($blog->content, 100) }}</p>
+                                <a href="{{ route('landing.blogdetail', $blog->id) }}" class="fw-bold text-secondary">Read More <i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>      
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+  </div>
+  <!-- Blog End -->
 
 <div class="container">
     <hr style="border: 2px solid black;">
