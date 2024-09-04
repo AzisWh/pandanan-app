@@ -22,10 +22,10 @@
                         <h3 class="text-white mb-4">Support By</h3>
                         <div class="row">
                             <div class="col-6 d-flex align-items-center justify-content-center mb-3">
-                                <img src="{{asset ('/assets/img/pandanan/BPSPL.PNG')}}" alt="BPSPL" class="img-thumbnail img-fluid" style="max-width: 100px;">
+                                <img src="{{asset ('/assets/img/pandanan/BPSPL.png')}}" alt="BPSPL" class="img-thumbnail img-fluid" style="max-width: 100px;">
                             </div>
                             <div class="col-6 d-flex align-items-center justify-content-center mb-3">
-                                <img src="{{asset ('/assets/img/pandanan/power.PNG')}}" alt="PLN" class="img-thumbnail img-fluid" style="max-width: 150px;">
+                                <img src="{{asset ('/assets/img/pandanan/power.png')}}" alt="PLN" class="img-thumbnail img-fluid" style="max-width: 150px;">
                             </div>
                         </div>
                     </div>
