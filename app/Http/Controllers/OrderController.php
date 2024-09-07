@@ -42,7 +42,7 @@ class OrderController extends Controller
     ]);
 
     // Send email notification to the admin
-    $adminEmail = 'aziswh7@gmail.com'; // Replace with your admin email address
+    $adminEmail = 'azis.hibatul2004@gmail.com'; // Replace with your admin email address
     Mail::to($adminEmail)->send(new OrderNotification($order));
 
     return redirect()->route('order.confirmation', $order->id)->with('success', 'Order placed successfully. Please wait for confirmation.');
