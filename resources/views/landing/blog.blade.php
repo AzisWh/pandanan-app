@@ -25,7 +25,7 @@
                     <a href="{{ route('landing.blogdetail', $blog->id) }}">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="{{ $blog->image ? Storage::url($blog->image) : asset('landing/img/blog-1.jpg') }}" class="img-fluid rounded-top w-100" alt="{{ $blog->title }}">
+                                <img src="{{ $blog->image ? asset('storage/public/'.$blog->image) : asset('landing/img/blog-1.jpg') }}" class="img-fluid rounded-top w-100" alt="{{ $blog->title }}">
                                 <div class="blog-date px-4 py-2"><i class="fa fa-calendar-alt me-1"></i> {{ $blog->published_at ? \Carbon\Carbon::parse($blog->published_at)->format('M d, Y') : 'Not Published' }}</div>
                             </div>
                             <div class="blog-content rounded-bottom p-4">

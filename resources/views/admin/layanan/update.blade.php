@@ -35,7 +35,7 @@
                 <label for="image" class="form-label">Image (max 2mb)</label>
                 @if ($layanan->image)
                     <div class="mb-2">
-                        <img src="{{ Storage::url($layanan->image) }}" alt="{{ $layanan->title }}" style="width: 100px;">
+                        <img src="{{ asset('storage/public/'.$layanan->image) }}" alt="{{ $layanan->title }}" style="width: 100px;">
                     </div>
                 @endif
                 <input class="form-control" type="file" id="image" name="image">

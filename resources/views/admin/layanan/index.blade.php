@@ -28,7 +28,7 @@
                             <td>{{ $item->description }}</td>
                             <td>
                                 @if($item->image)
-                                    <img src="{{ Storage::url($item->image) }}" alt="{{ $item->title }}" style="width: 100px;">
+                                    <img src="{{ asset('storage/public/'.$item->image) }}" alt="{{ $item->title }}" style="width: 100px;">
                                 @else
                                     No Image
                                 @endif
