@@ -13,7 +13,7 @@
                         <p class="mb-5 fs-5 text-white fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">Immerse yourself in the beauty and innovation that drives our vision to conserve, educate, and explore the wonders of Indonesia's marine biodiversity. 
                         </p>
                         <div class="carousel-caption-1-content-btn-about fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.7s" style="animation-delay: 1.7s;">
-                            <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2 fw-bold" href="#">Book Now</a>
+                            <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2 fw-bold" href="{{url ('/reservasi')}}">Book Now</a>
                         </div>
                     </div>
                 </div>
