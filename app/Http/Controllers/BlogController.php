@@ -79,7 +79,7 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $blog = Blog::findOrFail($id);
-        return view('admin.blog.edit', compact('blog'));
+        return view('admin.blog.update', compact('blog'));
     }
 
     /**
