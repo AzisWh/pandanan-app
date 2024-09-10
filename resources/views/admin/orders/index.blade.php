@@ -35,7 +35,7 @@
                 <td>{{ $order->whatsapp }}</td>
                 <td>
                     @if($order->payment_proof)
-                        <a href="{{ asset('storage/' . $order->payment_proof) }}" target="_blank">View Proof</a>
+                        <a href="{{ asset('storage/public/' . $order->payment_proof) }}" target="_blank">View Proof</a>
                     @else
                         <span>No Proof Uploaded</span>
                     @endif
