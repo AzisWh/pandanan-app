@@ -43,9 +43,21 @@ class LandingController extends Controller
             'order' => 'date',
             'maxResults' => $maxResults,
         ]);
-    
-        $videos = $response->json()['items'];
-        return view('landing.index', compact('homeWelcomes','paketJasa','layanan','faq','blog','videos'));
+
+        if ($response->successful()) {
+            $data = $response->json();
+
+            if (isset($data['items'])) {
+                $videos = $data['items']; 
+                return view('landing.index', compact('homeWelcomes','paketJasa','layanan','faq','blog','videos'));
+            } else {
+                return back()->with('error', 'Tidak ada video yang ditemukan untuk channel ini.');
+            }
+        } else {
+            return back()->with('error', 'Gagal mendapatkan data dari YouTube API.');
+        }
+
+        
     }
 
     public function admin(){
