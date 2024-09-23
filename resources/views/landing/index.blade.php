@@ -160,6 +160,23 @@
 
 @include('components.ourservice')
 
+{{-- youtube --}}
+<div class="container">
+    <h2>Video Terbaru dari channel <a href="https://www.youtube.com/@tamanlautpandanan">Taman Laut Pandanan</a> </h2>
+    <div class="row">
+        @foreach ($videos as $video)
+        <div class="col-md-4 mb-4">
+            <div class="video-container">
+                <iframe width="100%" height="215" src="https://www.youtube.com/embed/{{ $video['id']['videoId'] }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <h4>{{ $video['snippet']['title'] }}</h4>
+            <p>{{ $video['snippet']['description'] }}</p>
+        </div>
+        @endforeach
+    </div>
+</div>
+{{-- youtube end --}}
+
 <!-- Blog Start -->
 <div class="container-fluid blog py-5">
     <div class="container py-5">

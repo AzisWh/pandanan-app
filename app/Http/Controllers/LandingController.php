@@ -9,21 +9,43 @@ use App\Models\LayananKami;
 use App\Models\PaketJasa;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
 
 class LandingController extends Controller
 {
+    public function getYoutubeVideo() {
+        
+    
+        return view('your-view', compact('videos'));
+    }
+
     public function index(){
         $homeWelcomes = HomeWelcome::all();
         $paketJasa = PaketJasa::all();
         $layanan = LayananKami::all();
         $faq = frequentlyasked::all();
         
-        // Fetch only blogs within the last 7 days
+        //blog only 7 days
         $sevenDays = Carbon::now()->subDays(7);
         $blog = Blog::where('published_at', '>=', $sevenDays)
                     ->orWhere('created_at', '>=', $sevenDays)
                     ->get();
-        return view('landing.index', compact('homeWelcomes','paketJasa','layanan','faq','blog'));
+
+        //get youtube video
+        $apiKey = env('YOUTUBE_API');
+        $channelId = env('CHANNEL_ID');
+        $maxResults = 5;
+    
+        $response = Http::get("https://www.googleapis.com/youtube/v3/search", [
+            'key' => $apiKey,
+            'channelId' => $channelId,
+            'part' => 'snippet,id',
+            'order' => 'date',
+            'maxResults' => $maxResults,
+        ]);
+    
+        $videos = $response->json()['items'];
+        return view('landing.index', compact('homeWelcomes','paketJasa','layanan','faq','blog','videos'));
     }
 
     public function admin(){
