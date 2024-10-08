@@ -21,7 +21,7 @@
                     <div class="collapse p-3" id="{{$item->accordionname}}">
                         <div class="row">
                             <div class="col-md-4 text-center">
-                                <img src="{{ $item->image ? asset('storage/public/' . $item->image) : asset('storage/default.jpg')}}" class="img-fluid rounded" alt="{{$item->title ?? 'EMPTY'}}">
+                                <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('storage/default.jpg')}}" class="img-fluid rounded" alt="{{$item->title ?? 'EMPTY'}}">
                             </div>
                             <div class="col-md-8">
                                 <p class="text-left">
