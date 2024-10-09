@@ -21,15 +21,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($paketJasa as $item)
+                    @foreach($paketJasa as $index => $item)
                         <tr>
-                            <td>{{ $item->id }}</td>
+                            <td>{{ $index + 1 }}</td>
                             <td>{{ $item->name }}</td>
                             <td>{{ $item->description }}</td>
                             <td>{{ $item->price }}</td>
                             <td>
                                 @if($item->image)
-                                    <img src="{{ asset('storage/public/'.$item->image) }}" alt="{{ $item->title }}" style="width: 100px;">
+                                    <img src="{{ asset('storage/'.$item->image) }}" alt="{{ $item->title }}" style="width: 100px;">
                                 @else
                                     No Image
                                 @endif

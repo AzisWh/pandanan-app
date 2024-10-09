@@ -27,7 +27,7 @@
                             <td>{{ $blog->published_at ? $blog->published_at->format('d M Y') : 'Not Published' }}</td>
                             <td>
                                 @if($blog->image)
-                                    <img src="{{ asset('storage/public/'.$blog->image) }}" alt="{{ $blog->title }}" style="width: 100px;">
+                                    <img src="{{ asset('storage/'.$blog->image) }}" alt="{{ $blog->title }}" style="width: 100px;">
                                 @else
                                     No Image
                                 @endif

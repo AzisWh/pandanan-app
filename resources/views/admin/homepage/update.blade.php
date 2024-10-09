@@ -35,7 +35,7 @@
                 <label for="image" class="form-label">Image (max 2mb)</label>
                 @if ($homeWelcome->image)
                     <div class="mb-2">
-                        <img src="{{ asset('storage/public/'.$homeWelcome->image) }}" alt="{{ $homeWelcome->title }}" style="width: 100px;">
+                        <img src="{{ asset('storage/'.$homeWelcome->image) }}" alt="{{ $homeWelcome->title }}" style="width: 100px;">
                     </div>
                 @endif
                 <input class="form-control" type="file" id="image" name="image">

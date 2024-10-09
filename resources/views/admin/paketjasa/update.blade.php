@@ -35,7 +35,7 @@
                 <label for="image" class="form-label">Image (max 2mb)</label>
                 @if ($paketJasa->image)
                     <div class="mb-2">
-                        <img src="{{ asset('storage/public/'.$paketJasa->image) }}" alt="{{ $paketJasa->title }}" style="width: 100px;">
+                        <img src="{{ asset('storage/'.$paketJasa->image) }}" alt="{{ $paketJasa->title }}" style="width: 100px;">
                     </div>
                 @endif
                 <input class="form-control" type="file" id="image" name="image">

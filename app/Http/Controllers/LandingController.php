@@ -34,7 +34,7 @@ class LandingController extends Controller
         //get youtube video
         $apiKey = env('YOUTUBE_API');
         $channelId = env('CHANNEL_ID');
-        $maxResults = 5;
+        $maxResults = 6;
     
         $response = Http::get("https://www.googleapis.com/youtube/v3/search", [
             'key' => $apiKey,
