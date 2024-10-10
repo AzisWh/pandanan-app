@@ -33,7 +33,7 @@
                       </div>
                       <div class="ps-4">
                           <div class="service-btn">
-                          <img src="{{ $item->image ? asset('storage/public/' . $item->image) : asset('storage/default.jpg') }}" alt="Card {{$item->name ?? 'EMPTY'}}" style="width: 100px; height: 100px;">
+                          <img src="{{ $item->image ? asset('storage/app/public/' . $item->image) : asset('storage/app/public/default.jpg') }}" alt="Card {{$item->name ?? 'EMPTY'}}" style="width: 100px; height: 100px;">
                           </div>
                       </div>
                       </div>

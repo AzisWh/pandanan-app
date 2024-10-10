@@ -61,7 +61,7 @@
           <div class="row g-5">
             <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                 <div class="about-img rounded h-100">
-                    <img src="{{ asset('storage/' . $item->image) }}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="{{ $item->imgtitle ?? 'EMPTY' }}">
+                    <img src="{{ asset('storage/app/public/' . $item->image) }}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="{{ $item->imgtitle ?? 'EMPTY' }}">
                     <div class="about-exp"><span>{{ $item->imgtitle ?? 'EMPTY' }}</span></div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="ps-4">
                             <div class="service-btn">
-                            <img src="{{ $item->image ? asset('storage/' . $item->image) : asset('storage/default.jpg') }}" alt="Card {{$item->name ?? 'EMPTY'}}" style="width: 100px; height: 100px;">
+                            <img src="{{ $item->image ? asset('storage/app/public/' . $item->image) : asset('storage/app/public/default.jpg') }}" alt="Card {{$item->name ?? 'EMPTY'}}" style="width: 100px; height: 100px;">
                             </div>
                         </div>
                         </div>
@@ -189,7 +189,7 @@
                     <a href="{{ route('landing.blogdetail', $blog->id) }}">
                         <div class="blog-item">
                             <div class="blog-img">
-                                <img src="{{ asset('storage/'.$blog->image) }}" class="img-fluid rounded-top w-100" alt="{{ $blog->title }}">
+                                <img src="{{ asset('storage/app/public/'.$blog->image) }}" class="img-fluid rounded-top w-100" alt="{{ $blog->title }}">
                                 <div class="blog-date px-4 py-2"><i class="fa fa-calendar-alt me-1"></i> {{ $blog->published_at ? \Carbon\Carbon::parse($blog->published_at)->format('M d, Y') : 'Not Published' }}</div>
                             </div>
                             <div class="blog-content rounded-bottom p-4">

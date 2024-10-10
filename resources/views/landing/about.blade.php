@@ -33,7 +33,7 @@
             <div class="row g-5">
                 <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
                     <div class="about-img rounded h-100">
-                        <img src="{{ $item->image ? asset('storage/public/' . $item->image) : asset('storage/default.jpg') }}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="{{ $item->imgtitle ?? 'EMPTY' }}">
+                        <img src="{{ $item->image ? asset('storage/app/public/' . $item->image) : asset('storage/default.jpg') }}" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="{{ $item->imgtitle ?? 'EMPTY' }}">
                         <div class="about-exp"><span>{{$item->imgtitle}}</span></div>
                     </div>
                 </div>
