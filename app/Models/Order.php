@@ -17,6 +17,8 @@ class Order extends Model
         'payment_account',
         'payment_proof',
         'status',
+        'start_date',
+        'end_date'
     ];
 
     public function reservasiItem()

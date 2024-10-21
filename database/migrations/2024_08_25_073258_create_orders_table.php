@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('payment_account');
             $table->string('payment_proof');
             $table->enum('status', ['pending', 'confirmed'])->default('pending');
+            $table->date('start_date')->nullable()->after('status'); 
+            $table->date('end_date')->nullable()->after('start_date'); 
             $table->timestamps();
 
             // Foreign key constraint

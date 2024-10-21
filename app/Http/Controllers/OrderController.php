@@ -20,33 +20,37 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-        'reservasiitem_id' => 'required|exists:reservasiitems,id',
-        'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255',
-        'whatsapp' => 'required|string|max:15',
-        'payment_account' => 'required|string|max:255',
-        'payment_proof' => 'required|image|max:2048',
-    ]);
+            'reservasiitem_id' => 'required|exists:reservasiitems,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'whatsapp' => 'required|string|max:15',
+            'payment_account' => 'required|string|max:255',
+            'payment_proof' => 'required|image|max:2048',
+            'start_date' => 'required|date', 
+            'end_date' => 'required|date|after_or_equal:start_date',
+        ]);
 
-    $originalFileName = $request->file('payment_proof')->getClientOriginalName();
-    $paymentProofPath = $request->file('payment_proof')->storeAs('Order', $originalFileName, 'public');
+        $originalFileName = $request->file('payment_proof')->getClientOriginalName();
+        $paymentProofPath = $request->file('payment_proof')->storeAs('Order', $originalFileName, 'public');
 
-    $order = Order::create([
-        'reservasiitem_id' => $request->reservasiitem_id,
-        'name' => $request->name,
-        'email' => $request->email,
-        'whatsapp' => $request->whatsapp,
-        'payment_account' => $request->payment_account,
-        'payment_proof' => $paymentProofPath,
-        'status' => 'pending',
-    ]);
+        $order = Order::create([
+            'reservasiitem_id' => $request->reservasiitem_id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'whatsapp' => $request->whatsapp,
+            'payment_account' => $request->payment_account,
+            'payment_proof' => $paymentProofPath,
+            'status' => 'pending',
+            'start_date' => $request->start_date,  
+            'end_date' => $request->end_date,      
+        ]);
 
-    // Send email notification to the admin
-    $adminEmail = 'azis.hibatul2004@gmail.com'; // Replace with your admin email address
-    Mail::to($adminEmail)->send(new OrderNotification($order));
+        $adminEmail = 'azis.hibatul2004@gmail.com'; 
+        Mail::to($adminEmail)->send(new OrderNotification($order));
 
-    return redirect()->route('order.confirmation', $order->id)->with('success', 'Order placed successfully. Please wait for confirmation.');
-}
+        return redirect()->route('order.confirmation', $order->id)->with('success', 'Order placed successfully. Please wait for confirmation.');
+    }
+
     public function confirmation($orderId)
     {
         $order = Order::findOrFail($orderId);

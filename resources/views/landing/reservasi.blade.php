@@ -26,7 +26,7 @@
                         <div class="row align-items-center">
                             <div class="col-md-6">
                                 <h6>{{ $package->title }}</h6>
-                                <p class="mb-0">Duration: {{ $package->duration }}</p>
+                                <p class="mb-0">Duration: {{ $package->duration }} hours</p>
                                 <p class="text-muted">{{ $package->description }}</p>
                             </div>
                             <div class="col-md-3 text-primary">
@@ -54,6 +54,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5>Inquiry Summary</h5>
+                    <p>Total payment must be adjusted to the selected start and end date</p>
                 </div>
                 <div class="card-body">
                     <p>Package: <span id="summary-package">-</span></p>

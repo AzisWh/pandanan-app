@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserOrderConfirmation;
 use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderAdminController extends Controller
 {
@@ -28,6 +30,10 @@ class OrderAdminController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.orders.index')->with('success', 'Order status updated successfully.');
+        if ($request->status === 'confirmed') {
+            Mail::to($order->email)->send(new UserOrderConfirmation($order));
+        }
+
+        return redirect()->route('admin.orders.index')->with('success', 'Order status updated successfully and email has been sent.');
     }
 }

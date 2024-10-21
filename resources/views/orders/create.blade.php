@@ -29,35 +29,46 @@
 
     <form action="{{ route('order.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
-
+    
         <input type="hidden" name="reservasiitem_id" value="{{ $reservasiItem->id }}">
-
+    
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input type="text" class="form-control" id="name" name="name" required>
         </div>
-
+    
         <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
-
+    
         <div class="mb-3">
             <label for="whatsapp" class="form-label">WhatsApp Number</label>
             <input type="text" class="form-control" id="whatsapp" name="whatsapp" required>
         </div>
-
+    
         <div class="mb-3">
             <label for="payment_account" class="form-label">Payment Method</label>
             <input type="text" class="form-control" id="payment_account" name="payment_account" required>
         </div>
-
+    
+        <div class="mb-3">
+            <label for="start_date" class="form-label">Start Date</label>
+            <input type="date" class="form-control" id="start_date" name="start_date" required>
+        </div>
+    
+        <div class="mb-3">
+            <label for="end_date" class="form-label">End Date</label>
+            <input type="date" class="form-control" id="end_date" name="end_date" required>
+        </div>
+    
         <div class="mb-3">
             <label for="payment_proof" class="form-label">Upload Bukti Payment (max 2mb)</label>
             <input type="file" class="form-control" id="payment_proof" name="payment_proof" required>
         </div>
-
+    
         <button type="submit" class="btn btn-primary">Submit Order</button>
     </form>
+    
 </div>
 @endsection
