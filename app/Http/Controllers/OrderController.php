@@ -45,7 +45,7 @@ class OrderController extends Controller
             'end_date' => $request->end_date,      
         ]);
 
-        $adminEmail = 'azis.hibatul2004@gmail.com'; 
+        $adminEmail = 'pandanantamanlaut@gmail.com'; 
         Mail::to($adminEmail)->send(new OrderNotification($order));
 
         return redirect()->route('order.confirmation', $order->id)->with('success', 'Order placed successfully. Please wait for confirmation.');
